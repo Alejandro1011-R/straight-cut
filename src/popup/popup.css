@@ -1,0 +1,148 @@
+:root {
+  --bg: #ffffff;
+  --text: #1c1c1f;
+  --muted: #6b6b73;
+  --line: #e6e6ea;
+  --track-off: #d4d4da;
+  --accent: #5b5bd6;
+  --thumb: #ffffff;
+  --button-bg: #f2f2f5;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #18181b;
+    --text: #ededf0;
+    --muted: #9b9ba5;
+    --line: #2e2e33;
+    --track-off: #3f3f46;
+    --accent: #7c7cf0;
+    --thumb: #ffffff;
+    --button-bg: #26262b;
+    color-scheme: dark;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 280px;
+  background: var(--bg);
+  color: var(--text);
+  font: 13px/1.4 system-ui, -apple-system, sans-serif;
+}
+
+main {
+  padding: 16px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h1 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.status {
+  margin: 4px 0 16px;
+  color: var(--muted);
+}
+
+/* Switch: the real button carries role=switch; the motion sits on top. */
+.switch {
+  position: relative;
+  width: 38px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  border-radius: 11px;
+  background: var(--track-off);
+  cursor: pointer;
+  transition: background-color 150ms ease-out;
+}
+
+.switch[aria-checked='true'] {
+  background: var(--accent);
+}
+
+.switch:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--thumb);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.25);
+  transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.switch[aria-checked='true'] .thumb {
+  transform: translateX(16px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Keep the color fade, drop the slide's travel time. */
+  .thumb {
+    transition: none;
+  }
+}
+
+.stats {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.stats div {
+  display: flex;
+  justify-content: space-between;
+}
+
+dt {
+  color: var(--muted);
+}
+
+dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.reload {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.reload p {
+  margin: 0 0 8px;
+  color: var(--muted);
+}
+
+.reload button {
+  width: 100%;
+  padding: 7px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--button-bg);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}

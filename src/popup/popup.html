@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Straight Cut</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1 id="title">Straight Cut</h1>
+        <button id="toggle" class="switch" role="switch" aria-checked="true" aria-labelledby="title">
+          <span class="thumb" aria-hidden="true"></span>
+        </button>
+      </header>
+
+      <p id="status" class="status">Blocking ads on YouTube</p>
+
+      <dl class="stats">
+        <div>
+          <dt>Removed before playing</dt>
+          <dd id="removed">0</dd>
+        </div>
+        <div>
+          <dt>Skipped while playing</dt>
+          <dd id="skipped">0</dd>
+        </div>
+      </dl>
+
+      <div id="reload" class="reload" hidden>
+        <p>Reload YouTube for this to take effect.</p>
+        <button id="reload-tab" type="button">Reload tab</button>
+      </div>
+    </main>
+    <script src="popup.js" type="module"></script>
+  </body>
+</html>

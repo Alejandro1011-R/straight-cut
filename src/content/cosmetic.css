@@ -1,0 +1,41 @@
+/* Ad slots that survive pruning (new response shapes, server-rendered HTML). */
+ytd-ad-slot-renderer,
+ytd-in-feed-ad-layout-renderer,
+ytd-display-ad-renderer,
+ytd-promoted-sparkles-web-renderer,
+ytd-promoted-video-renderer,
+ytd-compact-promoted-video-renderer,
+ytd-search-pyv-renderer,
+ytd-banner-promo-renderer,
+ytd-statement-banner-renderer,
+ytd-brand-video-singleton-renderer,
+ytd-action-companion-ad-renderer,
+ytd-companion-slot-renderer,
+ytd-player-legacy-desktop-watch-ads-renderer,
+ytd-rich-item-renderer:has(> #content > ytd-ad-slot-renderer),
+ytd-rich-section-renderer:has(ytd-statement-banner-renderer, ytd-brand-video-singleton-renderer),
+ytd-engagement-panel-section-list-renderer[target-id="engagement-panel-ads"],
+#masthead-ad,
+#player-ads,
+#panels > ytd-ads-engagement-panel-content-renderer,
+ytm-promoted-sparkles-web-renderer,
+ytm-companion-ad-renderer,
+ad-slot-renderer,
+
+/* In-player overlays and the ad UI itself. */
+.ytp-ad-overlay-container,
+.ytp-ad-overlay-slot,
+.ytp-ad-image-overlay,
+.ytp-featured-product,
+.ytp-suggested-action-badge,
+
+/* The "ad blockers violate YouTube's Terms" dialog. main.js resumes playback. */
+tp-yt-paper-dialog:has(ytd-enforcement-message-view-model),
+ytd-enforcement-message-view-model {
+  display: none !important;
+}
+
+/* That dialog's backdrop also locks scrolling on the page. */
+body:has(ytd-enforcement-message-view-model) tp-yt-iron-overlay-backdrop {
+  display: none !important;
+}
