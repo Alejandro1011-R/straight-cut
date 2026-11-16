@@ -3,7 +3,16 @@
   "name": "Straight Cut",
   "version": "0.1.0",
   "description": "Removes YouTube ads before the player sees them, and skips the ones that slip through.",
-  "minimum_chrome_version": "111",
+  "minimum_chrome_version": "121",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{f351be0d-2cc3-4189-b385-d541e8e0a4ea}",
+      "strict_min_version": "128.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
   "icons": {
     "16": "icons/16.png",
     "32": "icons/32.png",
@@ -20,6 +29,7 @@
   },
   "background": {
     "service_worker": "src/background.js",
+    "scripts": ["src/background.js"],
     "type": "module"
   },
   "permissions": ["storage", "scripting", "declarativeNetRequest"],

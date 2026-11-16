@@ -1,7 +1,8 @@
 # Straight Cut
 
 Straight to the video. A tiny, open-source extension that removes YouTube ads
-in Arc, Chrome, Brave, Edge and any other Chromium browser.
+in Arc, Chrome, Brave, Edge and any other Chromium browser, and in Firefox and
+Firefox-based browsers like Zen.
 
 - Removes pre-roll and mid-roll video ads before the player loads them
 - Clears sponsored tiles from the home feed, search, the sidebar and Shorts
@@ -29,6 +30,16 @@ Pin it from the extensions menu to get the on/off switch and the counters.
 
 To update, download the new version over the old folder, then click the reload
 icon on the extension's card.
+
+### Firefox and Zen
+
+Firefox only installs signed extensions. Open a signed `.xpi` (see
+[Develop](#develop) for how to sign one) in Firefox or Zen and click **Add**. It
+needs Firefox 128 or newer.
+
+To try your own changes without signing, open `about:debugging#/runtime/this-firefox`,
+click **Load Temporary Add-on** and pick `manifest.json`. It stays until you
+restart the browser.
 
 ## How it works
 
@@ -79,7 +90,15 @@ see what changed.
 ```bash
 node --test test/            # unit tests: the prune layer in a sandboxed page
 node tools/make-icons.mjs    # regenerate icons/
+sh tools/build-firefox.sh    # pack dist/straight-cut-<version>.xpi for Firefox
 ```
+
+One `manifest.json` serves both engines. Chromium reads
+`background.service_worker` and ignores `background.scripts`; Firefox does the
+opposite and reads its add-on id from `browser_specific_settings`. To sign a new
+version, bump `version`, build the `.xpi` and upload it to
+[addons.mozilla.org](https://addons.mozilla.org/developers/) as a self-distributed
+("On your own") version.
 
 To run the unit tests against a real watch page saved with `curl`, set
 `SC_WATCH_HTML=/path/to/watch.html`.
